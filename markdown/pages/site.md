@@ -1,6 +1,5 @@
 ---
 title: About the site
-slug: site
 ---
 
 # About the site

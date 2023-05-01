@@ -18,11 +18,11 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
+      resolve: (post) => `/blog/${post._raw.flattenedPath.split("/")[1]}`,
     },
     slug: {
       type: "string",
-      resolve: (post) => post._raw.flattenedPath,
+      resolve: (post) => post._raw.flattenedPath.split("/")[1],
     },
   },
 }));
@@ -36,10 +36,11 @@ export const Page = defineDocumentType(() => ({
       description: "The title of the page",
       required: true,
     },
+  },
+  computedFields: {
     slug: {
       type: "string",
-      description: "The id of the page",
-      required: true,
+      resolve: (post) => post._raw.flattenedPath.split("/")[1],
     },
   },
 }));
