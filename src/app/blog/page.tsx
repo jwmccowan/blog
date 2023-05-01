@@ -4,7 +4,7 @@ export const revalidate = 60;
 
 export default function BlogPage() {
   return (
-    <div>
+    <div className="prose">
       <h1>Hi this blog</h1>
       <ul>
         {allPosts.map((post) => (

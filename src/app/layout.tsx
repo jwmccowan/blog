@@ -12,7 +12,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header>
+          <nav className="container mx-auto px-4 text-lg font-medium my-4">
+            <ul className="flex items-center gap-6">
+              <li className="mr-auto">
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
+              <li>
+                <a href="/site">Site</a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <div className="container mx-auto px-4">{children}</div>
+      </body>
     </html>
   );
 }
