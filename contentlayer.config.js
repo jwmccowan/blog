@@ -2,7 +2,7 @@ import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `**/*.md`,
+  filePathPattern: `posts/*.md`,
   fields: {
     title: {
       type: "string",
@@ -20,10 +20,31 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       resolve: (post) => `/blog/${post._raw.flattenedPath}`,
     },
+    slug: {
+      type: "string",
+      resolve: (post) => post._raw.flattenedPath,
+    },
+  },
+}));
+
+export const Page = defineDocumentType(() => ({
+  name: "Page",
+  filePathPattern: `pages/*.md`,
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the page",
+      required: true,
+    },
+    slug: {
+      type: "string",
+      description: "The id of the page",
+      required: true,
+    },
   },
 }));
 
 export default makeSource({
-  contentDirPath: "posts",
-  documentTypes: [Post],
+  contentDirPath: "markdown",
+  documentTypes: [Post, Page],
 });
