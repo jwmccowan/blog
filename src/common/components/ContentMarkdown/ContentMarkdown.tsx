@@ -1,5 +1,3 @@
-import type { Page } from "contentlayer/generated";
-
 export interface ContentMarkdownProps {
   className?: string;
   file: { body: { html: string } };

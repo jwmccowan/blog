@@ -1,8 +1,8 @@
 import ContentMarkdown from "@/common/components/ContentMarkdown/ContentMarkdown";
-import { findBySlug } from "@/common/utils/find-content";
+import { findBySlug, findPostBySlug } from "@/common/utils/find-content";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
-import { notFound } from "next/navigation";
+import TagList from "../TagList";
 
 export const dynamic = "error";
 export const dynamicParams = true;
@@ -17,14 +17,18 @@ interface PageProps {
 }
 
 export default function BlogPostPage({ params: { slug } }: PageProps) {
-  const post = findBySlug(allPosts)(slug);
+  const post = findPostBySlug(slug);
   return (
     <div className="prose my-12">
       <h1 className="text-3xl font-bold">{post.title}</h1>
       <p className="text-gray-600 italic">
         {format(parseISO(post.date), "LLLL d, yyyy")}
       </p>
-      <ContentMarkdown file={post} />
+      {post.tags && <TagList tags={post.tags} />}
+      <hr />
+      <article>
+        <ContentMarkdown file={post} />
+      </article>
     </div>
   );
 }

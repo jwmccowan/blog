@@ -1,3 +1,4 @@
+import { allPages, allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 export function findBySlug<T extends { slug: string }>(
@@ -11,3 +12,6 @@ export function findBySlug<T extends { slug: string }>(
     return foundMd;
   };
 }
+
+export const findPostBySlug = findBySlug(allPosts);
+export const findPageBySlug = findBySlug(allPages);
