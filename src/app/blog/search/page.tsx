@@ -6,7 +6,7 @@ export default function BlogSearchPage() {
     <div className="prose py-12">
       <h1>Blog posts - Search by tag</h1>
       <hr />
-      <Suspense>
+      <Suspense fallback={<p>Loading posts...</p>}>
         <ParamGrabber />
       </Suspense>
     </div>
