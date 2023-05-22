@@ -1,8 +1,11 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypePrismPlus from "rehype-prism-plus";
+import remarkGfm from "remark-gfm";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `posts/*.md`,
+  contentType: "mdx",
   fields: {
     title: {
       type: "string",
@@ -34,6 +37,7 @@ export const Post = defineDocumentType(() => ({
 export const Page = defineDocumentType(() => ({
   name: "Page",
   filePathPattern: `pages/*.md`,
+  contentType: "mdx",
   fields: {
     title: {
       type: "string",
@@ -52,4 +56,8 @@ export const Page = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "markdown",
   documentTypes: [Post, Page],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [[rehypePrismPlus, { ignoreMissing: true }]],
+  },
 });

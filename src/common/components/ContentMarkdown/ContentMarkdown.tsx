@@ -1,15 +1,14 @@
+import type { Page, Post } from "contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer/hooks";
+
 export interface ContentMarkdownProps {
   className?: string;
-  file: { body: { html: string } };
+  file: Post | Page;
 }
 
 export default function ContentMarkdown(
   props: ContentMarkdownProps,
 ): JSX.Element {
-  return (
-    <div
-      className={props.className}
-      dangerouslySetInnerHTML={{ __html: props.file.body.html }}
-    />
-  );
+  const MdxComponent = useMDXComponent(props.file.body.code);
+  return <MdxComponent />;
 }

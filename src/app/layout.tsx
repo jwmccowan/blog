@@ -1,4 +1,5 @@
 import "./tailwind.css";
+import "./prism.css";
 
 export const metadata = {
   title: "Create Next App",

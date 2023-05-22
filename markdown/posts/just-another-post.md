@@ -26,3 +26,8 @@ consequat enim id excepteur consequat nostrud esse esse fugiat dolore.
 Reprehenderit occaecat exercitation non cupidatat in eiusmod laborum ex eu
 fugiat aute culpa pariatur. Irure elit proident consequat veniam minim ipsum ex
 pariatur.
+
+```ts
+const myVar = "hello world";
+console.log(myVar);
+```

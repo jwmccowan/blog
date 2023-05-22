@@ -1,5 +1,5 @@
-import ContentMarkdown from "@/common/components/ContentMarkdown/ContentMarkdown";
-import { findBySlug, findPostBySlug } from "@/common/utils/find-content";
+import ContentMarkdown from "@/common/components/ContentMarkdown";
+import { findPostBySlug } from "@/common/utils/find-content";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import TagList from "../TagList";
